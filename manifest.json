@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Flight Extracter",
+  "version": "1.0.0",
+  "description": "Extract structured flight data from travel sites like MakeMyTrip",
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.makemytrip.com/*",
+    "https://*.mmtcdn.net/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.makemytrip.com/*",
+        "https://*.mmtcdn.net/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

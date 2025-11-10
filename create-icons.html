@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <h1>Flight Extracter Icon Generator</h1>
+    <p>Open this file in a browser and right-click each canvas to save as PNG.</p>
+    
+    <canvas id="icon128" width="128" height="128"></canvas>
+    <p>Right-click above → Save as icon128.png</p>
+    
+    <canvas id="icon48" width="48" height="48"></canvas>
+    <p>Right-click above → Save as icon48.png</p>
+    
+    <canvas id="icon16" width="16" height="16"></canvas>
+    <p>Right-click above → Save as icon16.png</p>
+
+    <script>
+        function drawIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            
+            // Gradient background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Draw airplane
+            ctx.fillStyle = 'white';
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = size / 32;
+            
+            // Simple airplane shape
+            const centerX = size / 2;
+            const centerY = size / 2;
+            const scale = size / 128;
+            
+            ctx.beginPath();
+            // Fuselage
+            ctx.ellipse(centerX, centerY, size * 0.15, size * 0.05, 0, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Wings
+            ctx.beginPath();
+            ctx.moveTo(centerX - size * 0.1, centerY);
+            ctx.lineTo(centerX - size * 0.3, centerY - size * 0.15);
+            ctx.lineTo(centerX - size * 0.25, centerY);
+            ctx.lineTo(centerX - size * 0.3, centerY + size * 0.15);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Tail
+            ctx.beginPath();
+            ctx.moveTo(centerX + size * 0.15, centerY);
+            ctx.lineTo(centerX + size * 0.25, centerY - size * 0.1);
+            ctx.lineTo(centerX + size * 0.2, centerY);
+            ctx.closePath();
+            ctx.fill();
+        }
+        
+        drawIcon(document.getElementById('icon128'), 128);
+        drawIcon(document.getElementById('icon48'), 48);
+        drawIcon(document.getElementById('icon16'), 16);
+    </script>
+</body>
+</html>
+

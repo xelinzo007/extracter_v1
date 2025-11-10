@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Extracter</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>✈️ Flight Extracter</h1>
+      <p class="subtitle">Extract structured flight data from travel sites</p>
+    </header>
+
+    <div class="status" id="status">
+      <span id="statusText">Ready to extract</span>
+    </div>
+
+    <div class="progress" id="progress" style="display: none;">
+      <div class="progress-header">
+        <span id="progressText">Processing...</span>
+        <span id="progressCounter">0/0</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-details" id="progressDetails"></div>
+    </div>
+
+    <div class="actions">
+      <button id="extractBtn" class="btn btn-primary">
+        Extract Flights<br>
+        <small style="font-size: 0.8em;">(Domestic: One-way & Round Trip)</small>
+      </button>
+      <button id="extractIntlRoundTripBtn" class="btn btn-primary">
+        Extract International Flights<br>
+        <small style="font-size: 0.8em;">(International: One-way & Round Trip)</small>
+      </button>
+      <button id="copyBtn" class="btn btn-secondary" disabled>
+        Copy JSON
+      </button>
+      <button id="downloadBtn" class="btn btn-secondary" disabled>
+        Download JSON
+      </button>
+      <button id="downloadLogsBtn" class="btn btn-secondary">
+        Download Logs
+      </button>
+    </div>
+
+    <div class="info" id="info">
+      <p><strong>Note:</strong> Use "Extract Flights" for <strong>domestic</strong> trips (one-way & round trip). Use "Extract International Flights" for <strong>international</strong> trips (one-way & round trip).</p>
+    </div>
+
+    <div class="results" id="results" style="display: none;">
+      <div class="results-header">
+        <h2>Extracted Data</h2>
+        <div class="results-stats">
+          <span class="flight-count" id="flightCount"></span>
+          <span class="execution-time" id="executionTime"></span>
+        </div>
+      </div>
+      <div class="json-container">
+        <pre id="jsonOutput"></pre>
+      </div>
+    </div>
+
+    <footer>
+      <p class="disclaimer">
+        ⚠️ Use responsibly. Respect website terms of service.
+      </p>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+
